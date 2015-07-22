@@ -7,18 +7,28 @@
   <link rel="stylesheet" type="text/css" href="css/libs.css">
   <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
-<body ng-cloak ng-controller="MainCtrl">
+<body ng-controller="MainCtrl" ng-cloak>
   <div class="container animated fadeIn">
     <div class="row">
       <div class="well well-lg">
         <label for="numberListTextarea" class="lead">
           In a given array of numbers, what's the number of such sub-arrays whose elements sum up to zero?
         </label>
-        <textarea id="numberListTextarea" class="form-control number-list" rows="1" ng-model="numberList"></textarea>
+        <textarea id="numberListTextarea" class="form-control number-list" rows="1"
+                  ng-model="numberList"
+                  ng-class="{
+                    'failed-validation': !validationResult.valid,
+                    'success-validation': validationResult.valid
+                  }"></textarea>
         <small>Input a valid Javascript array consisting of numbers.</small>
       </div>
       <div class="well well-lg">
-        Results
+        <div class="alert alert-danger animated fadeIn" role="alert" ng-if="!validationResult.valid">
+          <strong>Invalid input</strong>: {{ validationResult.reason }}
+        </div>
+        <number-of-subarrays-report
+                ng-if="validationResult.valid"
+                number-list="validationResult.parsed"></number-of-subarrays-report>
       </div>
     </div>
   </div>

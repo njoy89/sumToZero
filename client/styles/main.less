@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) 2015, Grzegorz Swatowski
+ */
+
+body {
+  [ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+  }
+}
 
 .container {
   padding-top: 20px;
@@ -9,5 +18,17 @@
     min-width: 500px;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .failed-validation {
+    border: 1px solid red;
+  }
+
+  .success-validation {
+    border: 1px solid green;
+  }
+
+  .alert {
+    margin-bottom: 0;
   }
 }
