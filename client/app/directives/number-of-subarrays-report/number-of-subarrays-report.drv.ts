@@ -16,15 +16,15 @@ angular.module('sumToZero').
       scope: {
         numberList: '='
       },
-      templateUrl: 'directives/number-of-subarrays-report.tmpl.html',
+      templateUrl: 'directives/number-of-subarrays-report/number-of-subarrays-report.tmpl.html',
       controller: /*@ngInject*/($scope:NumberOfSubarraysReportScopeInterface,
                                 NumberOfSubArraysCalculator:NumberOfSubArraysCalculatorInterface) =>
       {
-        $scope.result = NumberOfSubArraysCalculator.calculate($scope.numberList);
+        $scope.result = NumberOfSubArraysCalculator.calculateNumber($scope.numberList);
 
         $scope.$watch('numberList', (newNumberList, oldNumberList) => {
           if (newNumberList !== oldNumberList) {
-            $scope.result = NumberOfSubArraysCalculator.calculate(newNumberList);
+            $scope.result = NumberOfSubArraysCalculator.calculateNumber(newNumberList);
           }
         });
       }

@@ -11,7 +11,7 @@ interface MainCtrlScopeInterface extends ScopeInterface {
 
 angular.module('sumToZero').
   controller('MainCtrl', /*@ngInject*/($scope:MainCtrlScopeInterface, NumberListValidator:NumberListValidatorInterface) => {
-    let numberList:string = '[ ]';
+    let numberList:string = '[1, 2, -3, 0, 1, 2, 0]';
     _.assign($scope, {
       numberList: numberList,
       validationResult: NumberListValidator.validate(numberList)

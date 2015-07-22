@@ -100,7 +100,7 @@ gulp.task('app:ts', function () {
 });
 
 gulp.task('app:css', function () {
-  return gulp.src(paths.files.client.path + paths.files.client.less).
+  return gulp.src(paths.files.client.path + paths.files.client.lessMain).
     pipe(plugins.less()).
     pipe(plugins.concat(paths.files.build.bundle.appcss)).
     pipe(devMode ? plugins.util.noop() : plugins.minifyCss()).
