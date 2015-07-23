@@ -47,7 +47,7 @@ angular.module('sumToZero').
        * To clarify, a partial sum is defined as follows:
        * numberList[0] + numberList[1] + ... + numberList[i]
        * and
-       * aggrPartialSums[i] = |{ s : s = numberList[0] + ... + numberList[i] }|
+       * aggrPartialSums[s] = |{ i : s = numberList[0] + ... + numberList[i] }|
        *
        * Hence, the expected result equals to:
        * ( sum{s is a possible partial sum} (s over 2) ) + number of such partials sum that sum up to 0.
