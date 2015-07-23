@@ -12,7 +12,10 @@
     <div class="row">
       <div class="well well-lg">
         <label for="numberListTextarea" class="lead">
-          In a given array of numbers, what's the number of such sub-arrays whose elements sum up to zero?
+          In a given array of numbers, what's the number of such
+          <mark popover="A sub-array of an array arr[1..N] is such array arr[i..j] that i >= 1 and j <= N and i <= j."
+                popover-trigger="mouseenter" popover-placement="bottom">sub-arrays</mark>
+          whose elements sum up to zero?
         </label>
         <textarea id="numberListTextarea" class="form-control number-list" rows="1"
                   ng-model="numberList"
