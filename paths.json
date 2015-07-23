@@ -39,8 +39,8 @@
     "dev": {
       "js": [
         "./node_modules/angular/angular.js",
-        "./node_modules/angular-bootstrap/dist/ui-bootstrap.js",
-        "./node_modules/angular-bootstrap/dist/ui-bootstrap-tpls.js",
+        "./node_modules/angular-bootstrap/ui-bootstrap.js",
+        "./node_modules/angular-bootstrap/ui-bootstrap-tpls.js",
         "./node_modules/jquery/dist/jquery.js",
         "./node_modules/bootstrap/dist/js/bootstrap.js",
         "./node_modules/lodash/index.js"
@@ -59,8 +59,8 @@
     "prod": {
       "js": [
         "./node_modules/angular/angular.min.js",
-        "./node_modules/angular-bootstrap/dist/ui-bootstrap.min.js",
-        "./node_modules/angular-bootstrap/dist/ui-bootstrap-tpls.min.js",
+        "./node_modules/angular-bootstrap/ui-bootstrap.min.js",
+        "./node_modules/angular-bootstrap/ui-bootstrap-tpls.min.js",
         "./node_modules/jquery/dist/jquery.min.js",
         "./node_modules/bootstrap/dist/js/bootstrap.min.js",
         "./node_modules/lodash/index.js"
