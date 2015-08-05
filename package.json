@@ -8,7 +8,9 @@
   },
   "scripts": {
     "prestart": "npm install",
-    "start": "gulp start"
+    "start": "gulp start",
+    "pretest": "npm install && gulp app:ts",
+    "test": "karma start"
   },
   "dependencies": {
     "angular": "^1.4.1",
@@ -36,5 +38,17 @@
     "lodash": "^3.10.0",
     "run-sequence": "^1.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "angular-mocks": "^1.4.3",
+    "install": "^0.1.8",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-babel-preprocessor": "^5.2.1",
+    "karma-cli": "^0.1.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-typescript-preprocessor": "0.0.19",
+    "phantomjs": "^1.9.17",
+    "typescript": "^1.5.3"
+  }
 }

@@ -6,7 +6,10 @@
 
 interface IntervalItemInterface {
   left: number,
-  width: number
+  width: number,
+  top: number,
+  from: number,
+  to: number
 }
 
 interface NumberOfSubarraysVisualizationScopeInterface extends ScopeInterface {
@@ -41,7 +44,9 @@ angular.module('sumToZero').
             return {
               width: width - 10,
               left: left + 5,
-              top: INTERVAL_HEIGHT_PX * index
+              top: INTERVAL_HEIGHT_PX * index,
+              from: interval.indexBegin,
+              to: interval.indexEnd
             };
           });
         };
