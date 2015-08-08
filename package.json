@@ -36,9 +36,7 @@
     "jquery": "^2.1.4",
     "jshint-stylish": "^2.0.0",
     "lodash": "^3.10.0",
-    "run-sequence": "^1.1.1"
-  },
-  "devDependencies": {
+    "run-sequence": "^1.1.1",
     "angular-mocks": "^1.4.3",
     "install": "^0.1.8",
     "jasmine-core": "^2.3.4",

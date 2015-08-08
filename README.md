@@ -22,6 +22,8 @@ The following technologies/libraries have been used:
 * `npm install`
 * launch the browser and go to the `http://localhost:8080/` page. The port is configurable in the `config.json` file.
 
+In order to run tests, execute `npm run test`.
+
 # Deployment
 
 The web app is already deployed on http://sum-to-zero.herokuapp.com/.
