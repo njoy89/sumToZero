@@ -17,9 +17,26 @@ interface CalculateIntervalsInterface {
   (arr:Array<number>): Array<IntervalDetailsInterface>
 }
 
+interface CompressIntervalsInterface {
+  (intervals:Array<IntervalDetailsInterface>): Array<Array<IntervalDetailsInterface>>
+}
+
+interface IntervalIntersectsPackageInterface {
+  (intervals:Array<IntervalDetailsInterface>, testedInterval:IntervalDetailsInterface): boolean
+}
+
+interface IntervalsIntersectInterface {
+  (interface1:IntervalDetailsInterface, interface2:IntervalDetailsInterface): boolean
+}
+
+interface NumberBelongsToIntervalInterface {
+  (number:number, interval:IntervalDetailsInterface): boolean
+}
+
 interface NumberOfSubArraysCalculatorInterface {
   calculateNumber: CalculateNumberInterface,
-  calculateIntervals: CalculateIntervalsInterface
+  calculateIntervals: CalculateIntervalsInterface,
+  compressIntervals: CompressIntervalsInterface
 }
 
 interface PartialSumsInterface {
@@ -89,8 +106,40 @@ angular.module('sumToZero').
       return resultIntervals;
     };
 
+    let compressIntervals:CompressIntervalsInterface = (intervals) => {
+      let packages:Array<Array<IntervalDetailsInterface>> = [];
+      let numberBelongsToInterval:NumberBelongsToIntervalInterface = (number, interval) => {
+        return (interval.indexBegin <= number) && (number <= interval.indexEnd);
+      };
+      let intervalsIntersect:IntervalsIntersectInterface = (interval1, interval2) => {
+        return numberBelongsToInterval(interval1.indexBegin, interval2) ||
+          numberBelongsToInterval(interval2.indexBegin, interval1);
+      };
+      let intervalIntersectsPackage:IntervalIntersectsPackageInterface = (intervalsPackage, testedInterval) => {
+        return _.any(_.map(intervalsPackage, (currInterval) => intervalsIntersect(testedInterval, currInterval)));
+      };
+
+      _.forEach(intervals, (interval) => {
+        let added = false;
+        for (let i = 0; i < packages.length; ++i) {
+          if (!added && !intervalIntersectsPackage(packages[i], interval)) {
+            packages[i].push(interval);
+            added = true;
+            break;
+          }
+        }
+
+        if (!added) {
+          packages.push([interval]);
+        }
+      });
+
+      return packages;
+    };
+
     return {
       calculateNumber: calculateNumber,
-      calculateIntervals: calculateIntervals
+      calculateIntervals: calculateIntervals,
+      compressIntervals: compressIntervals
     };
   });

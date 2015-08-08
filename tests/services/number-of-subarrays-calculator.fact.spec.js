@@ -126,4 +126,86 @@ describe('NumberOfSubArraysCalculator', () => {
       containsInterval(intervals, 2, 6);
     });
   });
+
+  describe('should have defined compressIntervals method', () => {
+    let makeInterval = (a, b) => {
+      return {
+        indexBegin: a,
+        indexEnd: b
+      };
+    };
+    let numberBelongsToInterval = (number, interval) => {
+      return (interval.indexBegin <= number) && (number <= interval.indexEnd);
+    };
+    let intervalsIntersect = (interval1, interval2) => {
+      return numberBelongsToInterval(interval1.indexBegin, interval2) ||
+        numberBelongsToInterval(interval2.indexBegin, interval1);
+    };
+    let packageIsValid = (currPackage) => {
+      // each package is valid if all intervals belonging to it do not intersect with each other
+      for (let i = 0; i < currPackage.length; ++i) {
+        for (let j = i + 1; j < currPackage.length; ++j) {
+          if (intervalsIntersect(currPackage[i], currPackage[j])) {
+            return false;
+          }
+        }
+      }
+      return true;
+    };
+    let packagesAreValid = (packages) => {
+      return _.every(_.map(packages, packageIsValid));
+    };
+
+    it('', () => {
+      expect(NumberOfSubArraysCalculator.compressIntervals).toBeDefined();
+      expect(NumberOfSubArraysCalculator.compressIntervals).toEqual(jasmine.any(Function));
+    });
+
+    it('which compresses two non-overlapping intervals', () => {
+      let packages = NumberOfSubArraysCalculator.compressIntervals([makeInterval(0, 2), makeInterval(3, 4)]);
+      expect(packages.length).toBe(1);
+      expect(packagesAreValid(packages)).toBe(true);
+    });
+
+    it('which does not do anything with two edged-overlapping intervals', () => {
+      let packages = NumberOfSubArraysCalculator.compressIntervals([makeInterval(0, 2), makeInterval(2, 4)]);
+      expect(packages.length).toBe(2);
+      expect(packagesAreValid(packages)).toBe(true);
+    });
+
+    it('which compresses several small intervals which consecutive ones overlap with each other on the edge', () => {
+      let packages = NumberOfSubArraysCalculator.compressIntervals([
+        makeInterval(0, 1), makeInterval(1, 2), makeInterval(2, 3), makeInterval(3, 4), makeInterval(4, 5), makeInterval(5, 6)
+      ]);
+      expect(packages.length).toBe(2);
+      expect(packagesAreValid(packages)).toBe(true);
+    });
+
+    it('which does not compress any interval as each of them intersect with each other', () => {
+      let packages = NumberOfSubArraysCalculator.compressIntervals([
+        makeInterval(0, 10), makeInterval(1, 9), makeInterval(2, 8), makeInterval(3, 7), makeInterval(4, 6)
+      ]);
+      expect(packages.length).toBe(5);
+      expect(packagesAreValid(packages)).toBe(true);
+    });
+
+    describe('which uses intervalsIntersect function', () => {
+      it('', () => {
+        expect(intervalsIntersect).toBeDefined();
+        expect(intervalsIntersect).toEqual(jasmine.any(Function));
+      });
+
+      it('which determines that two intervals intersect', () => {
+        expect(intervalsIntersect(makeInterval(0, 2), makeInterval(1, 3))).toBe(true);
+        expect(intervalsIntersect(makeInterval(-10, -5), makeInterval(-8, -6))).toBe(true);
+        expect(intervalsIntersect(makeInterval(0, 1), makeInterval(-1, 2))).toBe(true);
+        expect(intervalsIntersect(makeInterval(5, 7), makeInterval(7, 9))).toBe(true);
+        expect(intervalsIntersect(makeInterval(-1, 0), makeInterval(-3, -1))).toBe(true);
+      });
+
+      it('which determines that two interval do not intersect', () => {
+        expect(intervalsIntersect(makeInterval(0, 2), makeInterval(3, 5))).toBe(false);
+      });
+    });
+  });
 });

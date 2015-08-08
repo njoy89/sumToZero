@@ -9,7 +9,9 @@ interface LodashInterface {
   map: (obj:Array<any>, fun:(item:any, ix:number) => any) => Array<any>,
   assign: (obj1:Object, obj2:Object) => Object,
   reduce: (obj1:Object, fun:(item1:any, item2:any, item3:any)=>any, obj2:Object) => any,
-  last: (obj:Object) => any
+  last: (obj:Object) => any,
+  forEach: (obj:any, fun:(item:any, ix:number) => any) => void;
+  any: (arr:Array<any>) => boolean
 }
 
 interface ScopeInterface {
