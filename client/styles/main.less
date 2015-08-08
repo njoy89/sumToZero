@@ -6,32 +6,37 @@ body {
   [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
   }
-}
 
-.container {
-  padding-top: 20px;
-  text-align: center;
-
-  .number-list {
-    font-size: 16px;
-    width: 50%;
-    min-width: 500px;
-    margin: 0 auto;
+  .loading-spinner {
+    margin-top: 20px;
     text-align: center;
   }
 
-  .failed-validation {
-    border: 1px solid red;
-  }
+  .container {
+    padding-top: 20px;
+    text-align: center;
 
-  .success-validation {
-    border: 1px solid green;
-  }
+    .number-list {
+      font-size: 16px;
+      width: 50%;
+      min-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-  .alert {
-    margin-bottom: 0;
-  }
+    .failed-validation {
+      border: 1px solid red;
+    }
 
-  @import "./../app/directives/number-of-subarrays-report/number-of-subarrays-report.less";
-  @import "./../app/directives/number-of-subarrays-visualization/number-of-subarrays-visualization.less";
+    .success-validation {
+      border: 1px solid green;
+    }
+
+    .alert {
+      margin-bottom: 0;
+    }
+
+    @import "./../app/directives/number-of-subarrays-report/number-of-subarrays-report.less";
+    @import "./../app/directives/number-of-subarrays-visualization/number-of-subarrays-visualization.less";
+  }
 }

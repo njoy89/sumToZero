@@ -8,6 +8,9 @@
   <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body ng-controller="MainCtrl">
+  <div class="fadeIn loading-spinner" ng-if="!loaded">
+    <i class="fa fa-spinner fa-spin fa-5x"></i>
+  </div>
   <div class="container animated fadeIn" ng-cloak>
     <div class="row">
       <div class="well well-lg">

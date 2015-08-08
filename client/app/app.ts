@@ -19,6 +19,10 @@ interface ScopeInterface {
   $applyAsync: (fun:any) => void
 }
 
+interface RootScopeInterface extends ScopeInterface {
+  loaded: boolean;
+}
+
 interface DOMElementInterface {
   find: (sel:string) => any;
 }
@@ -30,4 +34,6 @@ declare let _:LodashInterface;
 angular.module('sumToZero', [
   'ui.bootstrap',
   'sumToZero.partials'
-]);
+]).run(['$rootScope', function($rootScope:RootScopeInterface) {
+  $rootScope.loaded = true;
+}]);
