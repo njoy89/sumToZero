@@ -14,7 +14,8 @@ interface IntervalItemInterface {
 
 interface NumberOfSubarraysVisualizationScopeInterface extends ScopeInterface {
   numberList: Array<number>,
-  intervalList: Array<IntervalItemInterface>
+  intervalList: Array<IntervalItemInterface>,
+  numberBlockWidth: number
 }
 
 angular.module('sumToZero').
@@ -59,6 +60,8 @@ angular.module('sumToZero').
         };
 
         scope.intervalList = [];
+        scope.numberBlockWidth = 50;
+
         scope.$applyAsync(() => {
           calculateIntervalList(scope.numberList);
           scope.$watch('numberList', (newNumberList, oldNumberList) => {
